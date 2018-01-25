@@ -148,8 +148,8 @@ def valid_object(obs, types, name=None, ignore_missing=False):
             extras = set(obs) - set(types)
             missing = set(types) - set(obs)
         except:
-            extras = 0
-            missing = 0
+            extras = []
+            missing = []
             pass
         num_none = len([
             t
