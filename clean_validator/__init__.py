@@ -91,11 +91,14 @@ def valid_object(obs, types, name=None, ignore_missing=False):
         if isinstance(resp, (tuple, list, )):
             resp, msg = resp
         if not resp:
-            erros.append(
-                'invalid field %s:%s %s' % (
-                    '.'.join(name), obs, msg
-                ).strip()
-            )
+            if msg:
+                erros.append(msg)
+            else:
+                erros.append(
+                    'invalid field %s:%s %s' % (
+                        '.'.join(name), obs, msg
+                    ).strip()
+                )
     elif isinstance(types, (tuple, OR)):
         is_erro = True
         resps = []
